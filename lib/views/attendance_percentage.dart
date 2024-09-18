@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iti_app/model/db.dart';
 import 'package:iti_app/views/show_percentage.dart';
 
-class AttendancePercentage extends StatefulWidget {
+//page to select course for showing attendance percentage
+
+class AttendancePercentage extends StatelessWidget {
   const AttendancePercentage({super.key});
 
-  @override
-  State<AttendancePercentage> createState() => _AttendancePercentageState();
-}
-
-class _AttendancePercentageState extends State<AttendancePercentage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Get.back();
           },
@@ -58,7 +56,7 @@ class _AttendancePercentageState extends State<AttendancePercentage> {
         child: Expanded(
           child: ListView.builder(
             shrinkWrap: true,
-            itemCount: 5,
+            itemCount: courses.length,
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
@@ -78,29 +76,29 @@ class _AttendancePercentageState extends State<AttendancePercentage> {
                     color: Colors.white,
                   ),
                   width: double.infinity,
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Course Name',
-                            style: TextStyle(
+                            courses[index]['name'],
+                            style: const TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18,
                                 color: Color(0xff343333)),
                           ),
                           Text(
-                            'MSCC2024',
-                            style: TextStyle(
+                            courses[index]['code'],
+                            style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 color: Color(0xff4C4949)),
                           ),
                         ],
                       ),
-                      Icon(Icons.arrow_forward_ios_rounded),
+                      const Icon(Icons.arrow_forward_ios_rounded),
                     ],
                   ),
                 ),

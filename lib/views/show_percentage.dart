@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iti_app/model/db.dart';
+
+//page to show attendance percentage of selected course
 
 class ShowPercentage extends StatefulWidget {
   const ShowPercentage({super.key});
@@ -9,6 +12,7 @@ class ShowPercentage extends StatefulWidget {
 }
 
 class _ShowPercentageState extends State<ShowPercentage> {
+  bool enoughPercentage = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +33,7 @@ class _ShowPercentageState extends State<ShowPercentage> {
             Align(
               alignment: Alignment.center,
               child: Text(
-                'Attendance Report',
+                'Course Name',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -56,7 +60,7 @@ class _ShowPercentageState extends State<ShowPercentage> {
         //margin: const EdgeInsets.only(bottom: 100),
         padding: const EdgeInsets.all(10),
         child: ListView.builder(
-            itemCount: 10,
+            itemCount: studentsData.length,
             itemBuilder: (context, i) {
               return Padding(
                 padding:
@@ -87,33 +91,31 @@ class _ShowPercentageState extends State<ShowPercentage> {
                       //name and roll number
                       Container(
                         padding: const EdgeInsets.only(left: 20),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Sudhimon',
-                              style: TextStyle(
+                              studentsData[i]['name'],
+                              style: const TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18,
                                   color: Color(0xff343333)),
                             ),
                             Text(
-                              'MSCCS007',
-                              style: TextStyle(
+                              studentsData[i]['rollno'],
+                              style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
                                   color: Color(0xff4C4949)),
-                            )
+                            ),
                           ],
                         ),
                       ),
-                      //present absent marking
                       Container(
                         padding: const EdgeInsets.only(right: 20),
                         child: Row(
                           children: [
-                            //forenoon
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -122,13 +124,16 @@ class _ShowPercentageState extends State<ShowPercentage> {
                                   child: Container(
                                     width: 40,
                                     height: 40,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: Color(0xff389720)),
-                                    child: const Center(
+                                        color:
+                                            attendanceData[i]['percentage'] > 75
+                                                ? const Color(0xff389720)
+                                                : const Color(0xffE51717)),
+                                    child: Center(
                                       child: Text(
-                                        '90%',
-                                        style: TextStyle(
+                                        attendanceData[i]['percentage'].toString(),
+                                        style: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 16,
                                             fontWeight: FontWeight.w500),

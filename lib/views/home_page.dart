@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:iti_app/views/attendance.dart';
@@ -50,7 +49,7 @@ class HomePage extends StatelessWidget {
       ),
       drawer: const Drawer(
         backgroundColor: Colors.white,
-        child: Text('hello'),
+        child: Text('Sample'),
       ),
       //main grey background
       body: Container(
@@ -87,13 +86,13 @@ class HomePage extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: (){
-                              Get.to(AttendancePage());
+                              Get.to(const AttendancePage());
                             },
                             child: const Column(children: [
                               Icon(
                                 Icons.add_circle_rounded,
                                 size: 40,
-                                color: Color.fromARGB(255, 142, 142, 142),
+                                color: Color(0xff5473FF),
                               ),
                               Text(
                                 'Attendance',
@@ -107,13 +106,13 @@ class HomePage extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: (){
-                              Get.to(AttendanceReport());
+                              Get.to(const AttendanceReport());
                             },
                             child: const Column(children: [
                               Icon(
                                 Icons.analytics_rounded,
                                 size: 40,
-                                color: Color.fromARGB(255, 142, 142, 142),
+                                color: Color(0xff5473FF),
                               ),
                               Text(
                                 'Report',
@@ -134,7 +133,7 @@ class HomePage extends StatelessWidget {
                               Icon(
                                 Icons.calendar_month_rounded,
                                 size: 40,
-                                color: Color.fromARGB(255, 142, 142, 142),
+                                color: Color(0xff5473FF),
                               ),
                               Text(
                                 'Percentage',
@@ -183,7 +182,7 @@ class HomePage extends StatelessWidget {
                               Icon(
                                 Icons.analytics_rounded,
                                 size: 40,
-                                color: Color.fromARGB(255, 142, 142, 142),
+                                color: Color(0xff5473FF),
                               ),
                               Text(
                                 'Report',
@@ -236,7 +235,7 @@ class HomePage extends StatelessWidget {
                               Icon(
                                 Icons.people_alt_rounded,
                                 size: 40,
-                                color: Color.fromARGB(255, 142, 142, 142),
+                                color: Color(0xff5473FF),
                               ),
                               Text(
                                 'Students',

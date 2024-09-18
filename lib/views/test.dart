@@ -1,11 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 
 class AttendanceTest extends StatefulWidget {
-  AttendanceTest({super.key});
+  const AttendanceTest({super.key});
 
   @override
   State<AttendanceTest> createState() => _AttendancePageState();
@@ -26,7 +23,7 @@ class _AttendancePageState extends State<AttendanceTest> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             // Get.back();
           },
@@ -36,7 +33,7 @@ class _AttendancePageState extends State<AttendanceTest> {
           size: 30,
         ),
         backgroundColor: const Color(0xff5473FF),
-        title: Align(
+        title: const Align(
           alignment: Alignment.center,
           child: Text(
             'Attendance',
@@ -168,7 +165,7 @@ class _AttendancePageState extends State<AttendanceTest> {
                 color: Colors.blue,
                 width: 200,
                 height: 100,
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Tap Me!',
                     style: TextStyle(color: Colors.white, fontSize: 18),
@@ -176,14 +173,14 @@ class _AttendancePageState extends State<AttendanceTest> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Conditionally show another widget based on _isVisible state
             _isVisible
                 ? Container(
                     color: Colors.green,
                     width: 200,
                     height: 100,
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'This is a new widget',
                         style: TextStyle(color: Colors.white),

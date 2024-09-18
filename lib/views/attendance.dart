@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iti_app/model/db.dart';
 import 'package:iti_app/views/take_attendance_page.dart';
 
+//page to select trade before taking attendance
+
 class AttendancePage extends StatefulWidget {
-  AttendancePage({super.key});
+  const AttendancePage({super.key});
 
   @override
   _AttendancePageState createState() => _AttendancePageState();
@@ -17,7 +20,7 @@ class _AttendancePageState extends State<AttendancePage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Get.back();
           },
@@ -163,7 +166,7 @@ class _AttendancePageState extends State<AttendancePage> {
               Expanded(
                 child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: 5,
+                  itemCount: courses.length,
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
@@ -183,29 +186,29 @@ class _AttendancePageState extends State<AttendancePage> {
                           color: Colors.white,
                         ),
                         width: double.infinity,
-                        child: const Row(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Course Name',
-                                  style: TextStyle(
+                                  courses[index]['name'],
+                                  style: const TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 18,
                                       color: Color(0xff343333)),
                                 ),
                                 Text(
-                                  'MSCC2024',
-                                  style: TextStyle(
+                                  courses[index]['code'],
+                                  style: const TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
                                       color: Color(0xff4C4949)),
                                 ),
                               ],
                             ),
-                            Icon(Icons.arrow_forward_ios_rounded),
+                            const Icon(Icons.arrow_forward_ios_rounded),
                           ],
                         ),
                       ),
@@ -216,87 +219,6 @@ class _AttendancePageState extends State<AttendancePage> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-// Show Trades widget
-class ShowTrades extends StatelessWidget {
-  ShowTrades({super.key});
-
-  // Sample trade data
-  final List<Map<String, String>> trades = [
-    {'courseName': 'CS', 'courseCode': 'MSCC2024'},
-    {'courseName': 'Mcom', 'courseCode': 'MCMC2025'},
-    {'courseName': 'Fitter', 'courseCode': 'FITT2026'},
-    {'courseName': 'ECE', 'courseCode': 'ECEC2026'},
-    {'courseName': 'MA', 'courseCode': 'MACC2026'}
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: trades.length,
-        itemBuilder: (context, index) {
-          return Container(
-            margin: const EdgeInsets.only(bottom: 20),
-            padding: const EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black38,
-                  blurRadius: 6.0,
-                ),
-              ],
-              color: Colors.white,
-            ),
-            width: double.infinity,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      trades[index]['courseName'] ?? '',
-                      style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                          color: Color(0xff343333)),
-                    ),
-                    Text(
-                      trades[index]['courseCode'] ?? '',
-                      style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xff4C4949)),
-                    ),
-                  ],
-                ),
-                const Icon(Icons.arrow_forward_ios_rounded),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-// Show Engage widget
-class ShowEngage extends StatelessWidget {
-  const ShowEngage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Column(
-        children: [
-          Text('Hello..'),
-        ],
       ),
     );
   }

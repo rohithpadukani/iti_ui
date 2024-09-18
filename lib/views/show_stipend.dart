@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iti_app/model/db.dart';
+
+//page to show stipend of students for selected course
 
 class StipendShow extends StatefulWidget {
   const StipendShow({super.key});
@@ -14,7 +17,7 @@ class _StipendShowState extends State<StipendShow> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Get.back();
           },
@@ -54,7 +57,7 @@ class _StipendShowState extends State<StipendShow> {
       ),
       body: Container(
         child: ListView.builder(
-            itemCount: 10,
+            itemCount: studentsData.length,
             itemBuilder: (context, i) {
               return Padding(
                 padding:
@@ -85,20 +88,20 @@ class _StipendShowState extends State<StipendShow> {
                       //name and roll number
                       Container(
                         padding: const EdgeInsets.only(left: 20),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Sudhimon',
-                              style: TextStyle(
+                              studentsData[i]['name'],
+                              style: const TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18,
                                   color: Color(0xff343333)),
                             ),
                             Text(
-                              'MSCCS007',
-                              style: TextStyle(
+                              studentsData[i]['rollno'],
+                              style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
                                   color: Color(0xff4C4949)),
@@ -106,12 +109,11 @@ class _StipendShowState extends State<StipendShow> {
                           ],
                         ),
                       ),
-                      //present absent marking
                       Container(
                         padding: const EdgeInsets.only(right: 20),
-                        child: const Text(
-                          '750.0',
-                          style: TextStyle(
+                        child: Text(
+                          stipendData[i]['amount'].toString(),
+                          style: const TextStyle(
                               fontWeight: FontWeight.w700, fontSize: 16),
                         ),
                       ),

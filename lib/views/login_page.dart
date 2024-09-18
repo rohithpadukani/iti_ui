@@ -93,7 +93,7 @@ class LoginPage extends StatelessWidget {
             //login button
             GestureDetector(
               onTap: (){
-                Get.to(HomePage());
+                Get.to(const HomePage());
               },
               child: Container(
                 height: 40,

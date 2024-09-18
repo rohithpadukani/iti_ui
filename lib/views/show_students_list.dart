@@ -1,7 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:iti_app/model/db.dart';
+
+//page to show list of students for selected course
 
 class StudentsListShow extends StatefulWidget {
   const StudentsListShow({super.key});
@@ -11,12 +12,13 @@ class StudentsListShow extends StatefulWidget {
 }
 
 class _StudentsListShowState extends State<StudentsListShow> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Get.back();
           },
@@ -56,7 +58,7 @@ class _StudentsListShowState extends State<StudentsListShow> {
       ),
       body: Container(
         child: ListView.builder(
-            itemCount: 10,
+            itemCount: students.length,
             itemBuilder: (context, i) {
               return Padding(
                 padding:
@@ -87,20 +89,20 @@ class _StudentsListShowState extends State<StudentsListShow> {
                       //name and roll number
                       Container(
                         padding: const EdgeInsets.only(left: 20),
-                        child: const Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Sudhimon',
-                              style: TextStyle(
+                              studentsData[i]['name'],
+                              style: const TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18,
                                   color: Color(0xff343333)),
                             ),
                             Text(
-                              'MSCCS007',
-                              style: TextStyle(
+                              'MSC${studentsData[i]['rollno']}',
+                              style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
                                   color: Color(0xff4C4949)),
